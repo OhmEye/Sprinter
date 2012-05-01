@@ -16,7 +16,7 @@
 // Gen 3 Plus = 21
 // gen 3  Monolithic Electronics = 22
 // Gen3 PLUS for TechZone Gen3 Remix Motherboard = 23
-#define MOTHERBOARD 33
+#define MOTHERBOARD 3
 
 //// Thermistor settings:
 // 1 is 100k thermistor
@@ -26,12 +26,12 @@
 // 5 is ParCan supplied 104GT-2 100K
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
-#define THERMISTORHEATER 1
-#define THERMISTORBED 1
+#define THERMISTORHEATER 6
+#define THERMISTORBED 7
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {80, 80, 3200/1.25,700}
+#define _AXIS_STEP_PER_UNIT {89, 89, 1512, 707}
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
 // MakerGear Hybrid Prusa Mendel:
@@ -59,7 +59,7 @@ const bool Z_ENDSTOP_INVERT = false;
 //#define SDINITFILE
 
 //Only work with Atmega1284 you need +1 kb ram
-//#define SD_FAST_XFER_AKTIV
+#define SD_FAST_XFER_AKTIV
 
 //-----------------------------------------------------------------------
 //// STORE SETTINGS TO EEPROM
@@ -116,10 +116,10 @@ const bool DISABLE_E = false;
 //-----------------------------------------------------------------------
 // Inverting axis direction
 //-----------------------------------------------------------------------
-const bool INVERT_X_DIR = false;
+const bool INVERT_X_DIR = true;
 const bool INVERT_Y_DIR = false;
-const bool INVERT_Z_DIR = true;
-const bool INVERT_E_DIR = false;
+const bool INVERT_Z_DIR = false;
+const bool INVERT_E_DIR = true;
 
 //-----------------------------------------------------------------------
 //// ENDSTOP SETTINGS:
@@ -138,8 +138,8 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //-----------------------------------------------------------------------
 //Max Length for Prusa Mendel, check the ways of your axis and set this Values
 //-----------------------------------------------------------------------
-const int X_MAX_LENGTH = 200;
-const int Y_MAX_LENGTH = 200;
+const int X_MAX_LENGTH = 187;
+const int Y_MAX_LENGTH = 185;
 const int Z_MAX_LENGTH = 100;
 
 //-----------------------------------------------------------------------
@@ -175,7 +175,7 @@ long min_time_before_dir_change = 30; //milliseconds
 //// Acceleration settings
 //-----------------------------------------------------------------------
 // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
-#define _ACCELERATION 1000         // Axis Normal acceleration mm/s^2
+#define _ACCELERATION 3000         // Axis Normal acceleration mm/s^2
 #define _RETRACT_ACCELERATION 2000 // Extruder Normal acceleration mm/s^2
 #define _MAX_XY_JERK 20.0
 #define _MAX_Z_JERK 0.4
@@ -250,7 +250,7 @@ const int dropsegments=5; //everything with less than this number of steps will 
 
 //// PID settings:
 // Uncomment the following line to enable PID support. This is untested and could be disastrous. Be careful.
-#define PIDTEMP 1
+//#define PIDTEMP 1
 #ifdef PIDTEMP
 //Sanguinololu 1.2 and above, the PWM Output Hotend Timer 1 is used for the Hardware PWM
 //but in this Software use Timer1 for the Stepperfunction so it is not possible to use the "analogWrite" function.
