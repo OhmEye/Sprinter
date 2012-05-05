@@ -370,6 +370,40 @@ const short temptable_7[NUMTEMPS_7][2] = {
 };
 #endif
 
+#if (THERMISTORHEATER == 77) || (THERMISTORBED == 77) // 100k Honeywell 135-104LAG-J01 from http://reprap.org/wiki/Thermistor
+// Honeywell 100K Thermistor (135-104LAG-J01)
+// Made with createTemperatureLookup.py (http://svn.reprap.org/trunk/reprap/firmware/Arduino/utilities/createTemperatureLookup.py)
+// ./createTemperatureLookup.py --r0=100000 --t0=25 --r1=0 --r2=4700 --beta=3974 --max-adc=1023
+// r0: 100000
+// t0: 25
+// r1: 0
+// r2: 4700
+// beta: 3974
+// max adc: 1023
+#define NUMTEMPS_77 20
+const short temptable_77[NUMTEMPS_77][2] = {
+ {1, 916},
+ {54, 265},
+ {107, 216},
+ {160, 189},
+ {213, 171},
+ {266, 157},
+ {319, 146},
+ {372, 136},
+ {425, 127},
+ {478, 118},
+ {531, 110},
+ {584, 103},
+ {637, 95},
+ {690, 88},
+ {743, 80},
+ {796, 71},
+ {849, 62},
+ {902, 50},
+ {955, 34},
+ {1008, 2}
+ };
+#endif
 
 
 #if THERMISTORHEATER == 1
@@ -393,6 +427,9 @@ const short temptable_7[NUMTEMPS_7][2] = {
 #elif THERMISTORHEATER == 7
 #define NUMTEMPS NUMTEMPS_7
 #define temptable temptable_7
+#elif THERMISTORHEATER == 77
+#define NUMTEMPS NUMTEMPS_77
+#define temptable temptable_77
 #elif defined HEATER_USES_THERMISTOR
 #error No heater thermistor table specified
 #endif
@@ -417,6 +454,9 @@ const short temptable_7[NUMTEMPS_7][2] = {
 #elif THERMISTORBED == 7
 #define BNUMTEMPS NUMTEMPS_7
 #define bedtemptable temptable_7
+#elif THERMISTORBED == 77
+#define BNUMTEMPS NUMTEMPS_77
+#define bedtemptable temptable_77
 #elif defined BED_USES_THERMISTOR
 #error No bed thermistor table specified
 #endif
