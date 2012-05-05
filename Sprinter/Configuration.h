@@ -26,8 +26,9 @@
 // 5 is ParCan supplied 104GT-2 100K
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
+// 77 is 100k Honeywell thermistor 135-104LAG-J01 from http://reprap.org/wiki/Thermistor
 #define THERMISTORHEATER 6
-#define THERMISTORBED 7
+#define THERMISTORBED 77
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
