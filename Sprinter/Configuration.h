@@ -119,7 +119,7 @@ const bool DISABLE_E = false;
 //-----------------------------------------------------------------------
 const bool INVERT_X_DIR = true;
 const bool INVERT_Y_DIR = false;
-const bool INVERT_Z_DIR = false;
+const bool INVERT_Z_DIR = true;
 const bool INVERT_E_DIR = true;
 
 //-----------------------------------------------------------------------
@@ -140,8 +140,8 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //Max Length for Prusa Mendel, check the ways of your axis and set this Values
 //-----------------------------------------------------------------------
 const int X_MAX_LENGTH = 200;
-const int Y_MAX_LENGTH = 280;
-const int Z_MAX_LENGTH = 100;
+const int Y_MAX_LENGTH = 260;
+const int Z_MAX_LENGTH = 125;
 
 //-----------------------------------------------------------------------
 //// MOVEMENT SETTINGS
@@ -329,7 +329,7 @@ const int dropsegments=5; //everything with less than this number of steps will 
 //This is for controlling a fan to cool down the stepper drivers
 //it will turn on when any driver is enabled
 //and turn off after the set amount of seconds from last driver being disabled again
-//#define CONTROLLERFAN_PIN 23 //Pin used for the fan to cool controller, comment out to disable this function
+#define CONTROLLERFAN_PIN 23 //Pin used for the fan to cool controller, comment out to disable this function
 #define CONTROLLERFAN_SEC 60 //How many seconds, after all motors were disabled, the fan should run
 
 
