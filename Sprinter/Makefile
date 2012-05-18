@@ -33,11 +33,11 @@
 # $Id$
 
 TARGET = $(notdir $(CURDIR))
-INSTALL_DIR = ../../arduino22/arduino-0022/
-UPLOAD_RATE = 38400
+INSTALL_DIR = /in/arduino-0022/
+UPLOAD_RATE = 57600
 AVRDUDE_PROGRAMMER = stk500v1
 PORT = /dev/ttyUSB0
-MCU = atmega2560
+MCU = atmega1280
 #For "old" Arduino Mega
 #MCU = atmega1280
 #For Sanguinololu
@@ -49,7 +49,7 @@ F_CPU = 16000000
 # Below here nothing should be changed...
 
 ARDUINO = $(INSTALL_DIR)/hardware/arduino/cores/arduino
-AVR_TOOLS_PATH = /usr/bin
+AVR_TOOLS_PATH = /opt/cross/bin
 SRC =  $(ARDUINO)/pins_arduino.c $(ARDUINO)/wiring.c \
 $(ARDUINO)/wiring_analog.c $(ARDUINO)/wiring_digital.c \
 $(ARDUINO)/wiring_pulse.c \
