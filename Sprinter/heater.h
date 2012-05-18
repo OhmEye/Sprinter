@@ -90,6 +90,9 @@ extern unsigned char manage_monitor;
   extern int heater_duty;
 #endif
 
+#if defined(FAN_SOFT_PWM) && (FAN_PIN > -1)
+  extern volatile unsigned char g_fan_pwm_val;
+#endif
 
 #ifdef AUTOTEMP
     extern float autotemp_max;
@@ -112,8 +115,12 @@ extern unsigned char manage_monitor;
 
 
 
-#ifdef PID_SOFT_PWM
+#if defined(PID_SOFT_PWM) || (defined(FAN_SOFT_PWM) && (FAN_PIN > -1))
  void init_Timer2_softpwm(void);
+#endif
+
+#ifdef PID_AUTOTUNE
+ void PID_autotune(int PIDAT_test_temp);
 #endif
 
 void manage_heater();
