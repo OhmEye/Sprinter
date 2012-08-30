@@ -33,7 +33,7 @@
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {89, 89, 1512, 707}
+#define _AXIS_STEP_PER_UNIT {89, 89, 1512, 787}
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
 // MakerGear Hybrid Prusa Mendel:
@@ -140,16 +140,16 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //-----------------------------------------------------------------------
 //Max Length for Prusa Mendel, check the ways of your axis and set this Values
 //-----------------------------------------------------------------------
-const int X_MAX_LENGTH = 200;
-const int Y_MAX_LENGTH = 260;
-const int Z_MAX_LENGTH = 125;
+const int X_MAX_LENGTH = 220;
+const int Y_MAX_LENGTH = 280;
+const int Z_MAX_LENGTH = 170;
 
 //-----------------------------------------------------------------------
 //// MOVEMENT SETTINGS
 //-----------------------------------------------------------------------
 const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z, E
-#define _MAX_FEEDRATE {400, 400, 2, 45}       // (mm/sec)    
-#define _HOMING_FEEDRATE {1800,1800,180}      // (mm/min) !!
+#define _MAX_FEEDRATE {500, 500, 2, 50}       // (mm/sec)    
+#define _HOMING_FEEDRATE {3800,3800,240}      // (mm/min) !!
 #define _AXIS_RELATIVE_MODES {false, false, false, false}
 
 #define MAX_STEP_FREQUENCY 30000 // Max step frequency
@@ -183,9 +183,9 @@ long min_time_before_dir_change = 30; //milliseconds
 //// Acceleration settings
 //-----------------------------------------------------------------------
 // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
-#define _ACCELERATION 3000         // Axis Normal acceleration mm/s^2
-#define _RETRACT_ACCELERATION 2000 // Extruder Normal acceleration mm/s^2
-#define _MAX_XY_JERK 20.0
+#define _ACCELERATION 4000         // Axis Normal acceleration mm/s^2
+#define _RETRACT_ACCELERATION 1000 // Extruder Normal acceleration mm/s^2
+#define _MAX_XY_JERK 10.0
 #define _MAX_Z_JERK 0.4
 //#define _MAX_START_SPEED_UNITS_PER_SECOND {25.0,25.0,0.2,10.0}
 #define _MAX_ACCELERATION_UNITS_PER_SQ_SECOND {5000,5000,50,5000}    // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
@@ -283,7 +283,7 @@ const int dropsegments=5; //everything with less than this number of steps will 
 //Sanguinololu 1.2 and above, the PWM Output Hotend Timer 1 is used for the Hardware PWM
 //but in this Software use Timer1 for the Stepperfunction so it is not possible to use the "analogWrite" function.
 //This Soft PWM use Timer 2 with 400 Hz to drive the PWM for the hotend
-#define PID_SOFT_PWM
+//#define PID_SOFT_PWM
 
 //Measure the MIN/MAX Value of the Hotend Temp and show it with
 //Command M601 / Command M602 Reset the MIN/MAX Value
@@ -295,9 +295,9 @@ const int dropsegments=5; //everything with less than this number of steps will 
 
 //PID Controler Settings
 #define PID_INTEGRAL_DRIVE_MAX 80 // too big, and heater will lag after changing temperature, too small and it might not compensate enough for long-term errors
-#define PID_PGAIN 5145 //256 is 1.0  // value of X means that error of 1 degree is changing PWM duty by X, probably no need to go over 25
-#define PID_IGAIN 194 //256 is 1.0  // value of X (e.g 0.25) means that each degree error over 1 sec (2 measurements) changes duty cycle by 2X (=0.5) units (verify?)
-#define PID_DGAIN 34222 //256 is 1.0  // value of X means that around reached setpoint, each degree change over one measurement (half second) adjusts PWM by X units to compensate
+#define PID_PGAIN 2455 //256 is 1.0  // value of X means that error of 1 degree is changing PWM duty by X, probably no need to go over 25
+#define PID_IGAIN 67 //256 is 1.0  // value of X (e.g 0.25) means that each degree error over 1 sec (2 measurements) changes duty cycle by 2X (=0.5) units (verify?)
+#define PID_DGAIN 5581 //256 is 1.0  // value of X means that around reached setpoint, each degree change over one measurement (half second) adjusts PWM by X units to compensate
 
 // magic formula 1, to get approximate "zero error" PWM duty. Take few measurements with low PWM duty and make linear fit to get the formula
 // for my makergear hot-end: linear fit {50,10},{60,20},{80,30},{105,50},{176,100},{128,64},{208,128}
