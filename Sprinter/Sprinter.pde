@@ -438,7 +438,7 @@ unsigned char manage_monitor = 255;
     
     //force heater pins low
     if(HEATER_0_PIN > -1) WRITE(HEATER_0_PIN,LOW);
-    if(HEATER_1_PIN > -1) WRITE(HEATER_1_PIN,LOW);
+    if(HEATER_1_PIN > -1) analogWrite_check(HEATER_1_PIN,0);
     
   #ifdef PIDTEMP
     g_heater_pwm_val = 0;
@@ -783,7 +783,7 @@ void setup()
   #endif  
   #if (HEATER_1_PIN > -1) 
     SET_OUTPUT(HEATER_1_PIN);
-    WRITE(HEATER_1_PIN,LOW);
+    analogWrite_check(HEATER_1_PIN,0);
   #endif  
   
   //Initialize Fan Pin
@@ -1462,7 +1462,7 @@ FORCE_INLINE void process_commands()
             {              
               pinMode(pin_number, OUTPUT);
               digitalWrite(pin_number, pin_status);
-              //analogWrite(pin_number, pin_status);
+              analogWrite(pin_number, pin_status);
             }
           }
         }
@@ -2085,7 +2085,7 @@ FORCE_INLINE void kill()
   
   #if TEMP_1_PIN > -1
     target_bed_raw=0;
-    if(HEATER_1_PIN > -1) WRITE(HEATER_1_PIN,LOW);
+    if(HEATER_1_PIN > -1) analogWrite_check(HEATER_1_PIN,0);
   #endif
 
   disable_x();

@@ -548,9 +548,9 @@ void PID_autotune(int PIDAT_test_temp)
         showString(PSTR(" "));
         #if (HEATER_1_PIN > -1)
           if(READ(HEATER_1_PIN))
-            Serial.println(255);
+            Serial.println(BED_HEATER_PWM_HIGH);
           else
-            Serial.println(0);
+            Serial.println(BED_HEATER_PWM_LOW);
         #else
           Serial.println(0);
         #endif  
@@ -738,22 +738,24 @@ void PID_autotune(int PIDAT_test_temp)
     current_bed_raw = analogRead(TEMP_1_PIN);                  
 
   #endif
-  
-  
-  #ifdef MINTEMP
-    if(current_bed_raw >= target_bed_raw || current_bed_raw < minttemp)
-  #else
-    if(current_bed_raw >= target_bed_raw)
-  #endif
+ 
+    if(target_bed_raw <= minttemp)
     {
-      WRITE(HEATER_1_PIN,LOW);
-    }
-    else 
-    {
-      WRITE(HEATER_1_PIN,HIGH);
-    }
-    #endif
-    
+	   analogWrite_check(HEATER_1_PIN,0);
+    } 
+    else
+    { 
+  	  if(current_bed_raw >= target_bed_raw)
+ 	   {
+		analogWrite_check(HEATER_1_PIN,BED_HEATER_PWM_LOW);
+  	  }
+   	 else 
+ 	   {
+  	    analogWrite_check(HEATER_1_PIN,BED_HEATER_PWM_HIGH);
+	    }
+    }		
+#endif  
+
 #ifdef CONTROLLERFAN_PIN
   controllerFan(); //Check if fan should be turned on to cool stepper drivers down
 #endif
