@@ -37,7 +37,7 @@
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {89, 89, 1511.81102362205, 820}
+#define _AXIS_STEP_PER_UNIT {89, 89, 1511.81102362205, 1100} // 820 for minebea and 1061.95 for metalgear
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
 // MakerGear Hybrid Prusa Mendel:
@@ -188,12 +188,12 @@ const long min_time_before_dir_change = 30; //milliseconds
 //-----------------------------------------------------------------------
 // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 #define _ACCELERATION 4000         // Axis Normal acceleration mm/s^2
-#define _RETRACT_ACCELERATION 800 // Extruder Normal acceleration mm/s^2
-#define _MAX_XY_JERK 10.0
+#define _RETRACT_ACCELERATION 300 // Extruder Normal acceleration mm/s^2
+#define _MAX_XY_JERK 2.0
 #define _MAX_Z_JERK 0.4
-#define _MAX_E_JERK 3.0    // (mm/sec)
+#define _MAX_E_JERK 2.0    // (mm/sec)
 //#define _MAX_START_SPEED_UNITS_PER_SECOND {25.0,25.0,0.2,10.0}
-#define _MAX_ACCELERATION_UNITS_PER_SQ_SECOND {5000,5000,50,1000}    // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
+#define _MAX_ACCELERATION_UNITS_PER_SQ_SECOND {5000,5000,50,300}    // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
 
 
 // Minimum planner junction speed. Sets the default minimum speed the planner plans for at the end
